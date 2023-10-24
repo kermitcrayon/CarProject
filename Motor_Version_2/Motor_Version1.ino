@@ -32,7 +32,6 @@ int reading;
 int timer = 5000;
 int seconds, minutes, hours;
 char value;
-int speedValue;
 
 void setup() {
   MotorStart();
@@ -122,34 +121,61 @@ void AutoMode(){
 }
 
 void RemoteMode() {
- if(Serial.available() > 0){
+if(Serial.available() > 0){
     value = Serial.read();
     Serial.println(value);
     switch (value){
-      case 'f':
+      case 'F':
         forward();
-        Serial.println("FORWARD");
         break;
-      case 'r':
+      case 'R':
         right();
-        Serial.println("RIGHT");
         break;
-      case 'b':
+      case 'B':
         backward();
-        Serial.println("BACKWARDS");
         break;
-      case 'l':
+      case 'L':
         left();
-        Serial.println("LEFT");
+        break;
+      case 'S': 
+        break;
+      case '0':
+        speed(0);
+        break;
+      case '1':
+        speed(1);
+        break;
+      case '2':
+        speed(2);
+        break;
+      case '3':
+        speed(3);
+        break;
+      case '4':
+        speed(4);
+        break;
+      case '5':
+        speed(5);
+        break;
+      case '6':
+        speed(6);
+        break;
+      case '7':
+        speed(7);
+        break;
+      case '8':
+        speed(8);
+        break;
+      case '9':
+        speed(9);
+        break;
+      case 'q':
+        speed(10);
         break;
       default:
-        if (0 <= value <= 9){
-          speed(value);
-          Serial.println(speed(value));
-        };
         break;
     }
-  } 
+  }
 }
 
 void DefaultMode() {
